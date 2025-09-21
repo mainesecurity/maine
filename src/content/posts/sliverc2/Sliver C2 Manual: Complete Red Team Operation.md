@@ -693,7 +693,7 @@ One will that seems to be consitence is the syntax use of all BOFs, should the B
 This is the part where... you know, most fail, it's not really that difficult, there's just less use-cases to expose people to practice that. 
 The concept of pivoting remains the same, we just doing that with sliver now.
 
-##Socks5
+## Socks5
 sliver does have something with aid with that, we get a built-in socks5 feature for any sessions, this is how we use it. Let's check out the help
 
 ```bash
