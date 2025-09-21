@@ -14,7 +14,7 @@ A Command and Control (C2) framework is a centralized platform that allows an at
 
 Think of it as the mission control center for a cyber operation. Just as NASA sends commands to and receives data from a rover on Mars, an attacker uses a C2 server to send instructions to and exfiltrate data from infected computers.
 
-it goes without saying, that this technology is a Post Explatation Tool, meaning, it is only useful after you have successfully compromised a system by other means first, then implemented your C2 framework to Maintain Persistent Access: Remain inside a victim's network for long periods without being detected; Execute Commands: Run scripts, steal files, hijack webcams, or encrypt data for ransomware; Move Laterally: Pivot from one infected machine to others within the network; Exfiltrate Data: Steal sensitive information like passwords, intellectual property, or financial data; Download Additional Malware: Use the initial breach to deploy other malicious tools. 
+it goes without saying, that this technology is a Post Explanation Tool, meaning, it is only useful after you have successfully compromised a system by other means first, then implemented your C2 framework to Maintain Persistent Access: Remain inside a victim's network for long periods without being detected; Execute Commands: Run scripts, steal files, hijack webcams, or encrypt data for ransomware; Move Laterally: Pivot from one infected machine to others within the network; Exfiltrate Data: Steal sensitive information like passwords, intellectual property, or financial data; Download Additional Malware: Use the initial breach to deploy other malicious tools. 
 
 So a C2 framework does not get you the foothold, you have to hack your way into the foothold first :)
 
@@ -22,7 +22,7 @@ as the title says, we chose Sliver by BishopFox as our Command and Control Frame
 
 # Setting up
 First, we spin up a Linux server, any Linux distribution will work fine, additionally, the server will just server as a proxy to compromised machines and data storage.
-We must use the binary for the server especially, available on BishopFox github: https://github.com/BishopFox/sliver/releases, downlaod the sliver-server_linux. make it an executable and run it.
+We must use the binary for the server especially, available on BishopFox github: https://github.com/BishopFox/sliver/releases, download the sliver-server_linux. make it an executable and run it.
 
 
 ```bash
@@ -107,12 +107,12 @@ sliver >
 ```
 
 # Your First Beacon
-The Server set up is done. We are given a windows 10 as a target. We disable all anti-virus and tampering on the target machine for now for demostration purposes. Let’s generate a quick implant and send it over to the target.
+The Server set up is done. We are given a windows 10 as a target. We disable all anti-virus and tampering on the target machine for now for demonstration purposes. Let’s generate a quick implant and send it over to the target.
 Using the help with the generate command, we are given the help menu along with some examples we can try.
 
 ```bash
 ++ Command and Control ++
-You must specificy at least one c2 endpoint when generating an implant, this can be one or more of --mtls, --wg, --http, or --dns, --named-pipe, or --tcp-pivot.
+You must specify at least one c2 endpoint when generating an implant, this can be one or more of --mtls, --wg, --http, or --dns, --named-pipe, or --tcp-pivot.
 The command requires at least one use of --mtls, --wg, --http, or --dns, --named-pipe, or --tcp-pivot.
 
 The follow command is used to generate a sliver Windows executable (PE) file, that will connect back to the server using mutual-TLS:
@@ -207,7 +207,7 @@ sliver > beacons
 ID Name <SNIP>      Hostname         Username   Operating System <SNIP> c46b2b6e RICH_BRUSH  DESKTOP-DUQ8TTD   me         windows/amd64  <SNIP>sliver >
 ```
 
-we can interact with a shell by entering "use" and then hit enter, you will be prompted with a list of your sessions and beacons, select the correct beacon, and hit enter again. alternatavely, we can use the shell ID to connect as follow
+we can interact with a shell by entering "use" and then hit enter, you will be prompted with a list of your sessions and beacons, select the correct beacon, and hit enter again. alternatively, we can use the shell ID to connect as follow
 
 ```bash
 sliver > use c46b2b6e
@@ -237,7 +237,7 @@ Beacon ID: c46b2b6e-f408-4829-8899-64472c646b57
       Next Checkin: Fri Jan  3 22:08:55 SAST 2025 (23m44s ago)
 ```
 
-We proceded to run the info command to get some basic information of the compromised endpoint, however, we notice that the entered command do take a while before getting an output, this behaviour is normal, it is because we are on beacon mode, it supposed to help to be stealthy. 
+We proceeded to run the info command to get some basic information of the compromised endpoint, however, we notice that the entered command do take a while before getting an output, this behavior is normal, it is because we are on beacon mode, it supposed to help to be stealthy. 
 To move from beacon made to live session, where we do not have any delay, we enter the command interactive and hit enter (bad for OPSEC, higher risk to get caught)
 
 ```bash
@@ -268,7 +268,7 @@ sliver (RICH_BRUSH) > close
 
 Do not worry, we close the session, not the beacon :)
 
-now, we are on the system, before we can go into enumeration or stituation awaressness, there are few simple helpful commands to know.
+now, we are on the system, before we can go into enumeration or situation awareness, there are few simple helpful commands to know.
 
 one of the feature is that we can upload or download files from our endpoint to the target and vice-versa, now this is quite useful for your file transfer activities, no need to spwn a server and download it from there or again download something from the web directly to the target and leaving more tracing to be detected.
 
@@ -337,7 +337,7 @@ Flags:
 
 There is however, a stealthier way, it seems using the command execute-assembly spawns a child process for it to run… we can then use inline-execute-assembly, using the same syntax as above as execute-assembly command, allows us to run the command within the current process rather than creating a new one. pretty cool :) cause imagine you migrated into another trusted process like explorer ! see the vision ? :)
 
-You may have notice the loot feature while going over other command, indeed, we can store data or credentials  in sliver via another command  by adding --loot along the command we are using, for exmape, cat creds.txt --loot, that will not only read the file but also, store it in your loot.
+You may have notice the loot feature while going over other command, indeed, we can store data or credentials  in sliver via another command  by adding --loot along the command we are using, for example, cat creds.txt --loot, that will not only read the file but also, store it in your loot.
 we could also add loot manually, let's check the loot help 
 
 ```bash
@@ -387,7 +387,7 @@ The loot option is kinda self-explanatory, and quite useful to have a "secure wa
 
 # Enumeration
 
-Now, remember that, this tool does not hack for you, it is merely an aid to your existing expertise, so I would assume that we know how to PrivEsc a system and so and so, however, Sliver make our job a bit easier and faster in a sense. To futher our enumeration on a compromised system we can leverage built-in command instead of bringing our own tool for each case( eg: adcs, kerberosting) everytime. Sliver has what is called BOF extensions, Beacon Object File extensions, those can be accessed from armory, the "BOF manager" I guess.
+Now, remember that, this tool does not hack for you, it is merely an aid to your existing expertise, so I would assume that we know how to PrivEsc a system and so and so, however, Sliver make our job a bit easier and faster in a sense. To further our enumeration on a compromised system we can leverage built-in command instead of bringing our own tool for each case( eg: adcs, kerberosting) every time. Sliver has what is called BOF extensions, Beacon Object File extensions, those can be accessed from armory, the "BOF manager" I guess.
 IMPORTANT: BOF Extensions are installed per-sliver client, they are not stored on the server. Thus extensions are not shared across operators, each operator must install the extension to use it.
 
 let's check the list of available BOFs
@@ -650,7 +650,7 @@ Cannot enumerate antivirus. root\SecurityCenter2 WMI namespace is not available 
 <SNIP>
 ```
 
-NOW, the issue with BOF sometimes is that they will definately spawn a new process to execute, that will sets the alarms and kill your shell should there be an AV or some sort of security in place. Luckily just like execute-assembly, we can run a BOF in procress with the flag -i or to another existing process with -p. I guess we could also just do execute-assembly then add the -i as well, should work too. If nothing is changed in terms of what process to run into and inline ( -i) is not used, the child process that sliver will spawn will be a notepad process as set by default.
+NOW, the issue with BOF sometimes is that they will definitely spawn a new process to execute, that will sets the alarms and kill your shell should there be an AV or some sort of security in place. Luckily just like execute-assembly, we can run a BOF in procress with the flag -i or to another existing process with -p. I guess we could also just do execute-assembly then add the -i as well, should work too. If nothing is changed in terms of what process to run into and inline ( -i) is not used, the child process that sliver will spawn will be a notepad process as set by default.
 
 ```bash
 [server] sliver > seatbelt -h
@@ -893,4 +893,4 @@ Our shell session is now authenticated with the new credentials, meaning differe
 
 There is plenty one can do with a C2 framework, we have covered the most important topic, Enumeration, Pivoting and Lateral movement via Sliver C2, topics such as kerberoasting and other techiniques, I deemed were out of scope, as skilled as you are, you will certainly find it straight-forward to implement your hacking techniques leveraging Sliver C2, be sure as well to go through the armory BOFs, that will certainly fast track your hacking progress.
 
-I will be update this blog again as I progress through HackTheBox ProLabs, I believe I could have digged a little deeper overall on the explanations. nonetheless, do appreciate that I wrote all that without a a built-in grammar check, no AI, surely there are mistakes in here, but I'm impressed ! see you.
+I will be updating this blog again as I progress through HackTheBox ProLabs, I believe I could have digged a little deeper overall on the explanations, see you !
