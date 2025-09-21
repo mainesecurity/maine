@@ -66,7 +66,7 @@ Now we create an operator, then share the cfg file to the corresponding person.
 ```
 
 
-Tip: Feel free to consult the help menu of every commands, with help <command> or <command> — help
+Tip: Feel free to consult the help menu of every commands, with help <command> or <command> `--help`
 
 From the operator terminal, repeat the step for setting up sliver-server_linux , for Sliver-client this time, alternatively in kali linux, we can just type sliver-client in our terminal and enter “y” for yes. This will install the client from the apt package manager.
 
@@ -337,7 +337,7 @@ Flags:
 
 There is however, a stealthier way, it seems using the command execute-assembly spawns a child process for it to run… we can then use inline-execute-assembly, using the same syntax as above as execute-assembly command, allows us to run the command within the current process rather than creating a new one. pretty cool :) cause imagine you migrated into another trusted process like explorer ! see the vision ? :)
 
-You may have notice the loot feature while going over other command, indeed, we can store data or credentials  in sliver via another command  by adding --loot along the command we are using, for example, cat creds.txt --loot, that will not only read the file but also, store it in your loot.
+You may have notice the loot feature while going over other command, indeed, we can store data or credentials  in sliver via another command  by adding `--loot` along the command we are using, for example, cat creds.txt `--loot`, that will not only read the file but also, store it in your loot.
 we could also add loot manually, let's check the loot help 
 
 ```bash
