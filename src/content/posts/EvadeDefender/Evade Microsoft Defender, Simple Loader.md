@@ -301,6 +301,7 @@ C:\source\repos\ProGamer2\ProGamer2\bin\x64\Release\net8.0 (5 items, 163.2 KiB)
 -rw-rw-rw-  ProGamer2.runtimeconfig.json  340 B      Fri Sep 26 10:00:40 +0200 2025
 ```
 
+# Conclusion
 It is worth mentioning techniques such as the one used by this individual [shanekhantaun9](https://github.com/shanekhantaun9/RemoteLoader), an alternative which seems to work just well using the same concept of stages rather with a beacon/implant. 
 
 So, well, here are the evasion techniques we ended up using:
