@@ -4,7 +4,7 @@ published: 2025-10-01
 description: ''
 image: './virus.png'
 tags: [RedTeamer, Malware Development]
-category: 'RedTeam, Malware Development'
+category: 'Malware Development'
 draft: false 
 lang: 'en'
 ---
