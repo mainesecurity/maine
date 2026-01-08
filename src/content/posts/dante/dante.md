@@ -1,5 +1,5 @@
 ---
-title: Dante Certificate - Review
+title: Dante Certificate & Review
 published: 2026-01-04
 description: 'Dante HTB Pro Lab Certificate'
 image: './dante.png'
@@ -11,7 +11,7 @@ lang: 'en'
 
 *Note: I will provide the unredacted copy upon request*
 
-Dante ProLab provides the opportunity to learn common red team methodologies, and gain familiarity with Penetration Testing Concept.
+Dante ProLab provides an opportunity to learn common red team methodologies, and gain familiarity with Penetration Testing Concept.
 
 ### Scenario
 

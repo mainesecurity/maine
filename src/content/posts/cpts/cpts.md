@@ -1,5 +1,5 @@
 ---
-title: Certified Penetration Testing Specialist (CPTS) - Review
+title: Certified Penetration Testing Specialist (CPTS) & Review
 published: 2026-01-04
 description: 'HTB Certified Penetration Testing Specialist'
 image: './cptsimage.png'
