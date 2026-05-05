@@ -1,10 +1,10 @@
 ---
-title: puppet
+title: Puppet Certificate & Review
 published: 2026-01-08
 description: 'Certificate'
 image: './puppet.png'
 tags: [Certificate]
-category: ''
+category: 'Certificate'
 draft: false 
 lang: ''
 ---
