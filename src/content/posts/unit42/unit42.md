@@ -97,18 +97,5 @@ Event ID 5 indicates a process termination. Filtering for this ID and locating t
 ![Event ID 5](./eventid5.png)
 Fig. 9 – Event ID 5 with the termination timestamp of the malware process.
 
-## Lessons Learned: Sysmon Event IDs for Investigation
-
-This exercise demonstrates a structured methodology for investigating suspicious Windows endpoints using Sysmon logs. When approaching a blackbox analysis, the following Event IDs provide a solid starting point:
-Event ID	Description	Key Fields
-1	Process creation	Process path, parent process, command line, hashes
-2	File creation time changed	Target file, original timestamp, modified timestamp
-3	Network connection	Source process, destination IP, port
-5	Process termination	Terminated process path, time
-11	File creation	Process, created file path
-22	DNS query	Querying process, domain name, resolved IP
-
-For a complete reference, visit the Ultimate Windows Security Encyclopedia.
-
 # Conclusion
 By systematically examining process creation, file system modifications, network connections, and DNS queries, we pieced together the infection timeline from a single Sysmon log file. The attacker used a double-extension executable hosted on Dropbox, dropped a backdoored UltraVNC installer, employed timestomping to evade detection, and performed a connectivity check against example.com. This lab illustrates the power of Windows endpoint logging in incident response and forensics.
