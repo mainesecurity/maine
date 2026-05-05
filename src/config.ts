@@ -46,7 +46,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.About,
 		{
 			name: "Hack The Box",
-			url: "https://app.hackthebox.com/profile/855535", // Internal links should not include the base path, as it is automatically added
+			url: "https://profile.hackthebox.com/profile/019c5d82-c68c-7300-93bf-63d9f9893c06", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
 		},
 	],
@@ -67,12 +67,12 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "Email",
 			icon: "fa6-solid:envelope",
-			url: "mailto:m4in3@proton.me",
+			url: "mailto:m4ine1234@gmail.com",
 		},
 		{
 			name: "Hackthebox",
 			icon: "fa6-solid:terminal",
-			url:  "https://app.hackthebox.com/profile/855535",
+			url:  "https://profile.hackthebox.com/profile/019c5d82-c68c-7300-93bf-63d9f9893c06",
 		},
 	],
 };
