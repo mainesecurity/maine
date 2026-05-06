@@ -16,7 +16,7 @@ In this investigation, we familiarize ourselves with key Sysmon Event IDs and ho
 
 # Investigation
 
-### Task 1: How many Event logs are there with Event ID 11? 
+## Task 1: How many Event logs are there with Event ID 11? 
 Answer: 56
 
 With only one log file provided, we open the artifact and simply count the number of events where EventID=11. There are 56 such events, meaning the system recorded 56 file creations during the observed timeframe.
@@ -25,7 +25,7 @@ With only one log file provided, we open the artifact and simply count the numbe
 
 Fig. 1 – General view of the log set (Windows Defender real-time protection status for context).
 
-### Task 2: What is the malicious process that infected the victim's system?
+## Task 2: What is the malicious process that infected the victim's system?
 
 Answer: C:\Users\CyberJunkie\Downloads\Preventivo24.02.14.exe.exe
 
@@ -42,7 +42,7 @@ A further process recorded at the fifth log entry provides additional context of
 Fig. 3 – Another process creation event tied to the malware.
 
 
-### Task 3: Which Cloud drive was used to distribute the malware?
+## Task 3: Which Cloud drive was used to distribute the malware?
 
 Answer: dropbox
 
@@ -51,7 +51,7 @@ DNS query logs (Event ID 22) reveal domains the system attempted to resolve. By 
 ![Event ID 22](./eventid22.png)
 Fig. 4 – Event ID 22 showing DNS queries, including the cloud storage service.
 
-### Task 4: where the file creation date is changed to make it appear older and blend in with other files. What was the timestamp changed to for the PDF file?
+## Task 4: where the file creation date is changed to make it appear older and blend in with other files. What was the timestamp changed to for the PDF file?
 
 Answer: 2024-01-14 08:10:06
 
@@ -60,7 +60,7 @@ Event ID 2 captures file creation time changes, recording the original timestamp
 ![Event ID 2](./eventid2.png)
 Fig. 5 – File creation time change event with the tampered timestamp.
 
-### Task 5: The malicious file dropped a few files on disk. Where was "once.cmd" created on disk? Please answer with the full path along with the filename.
+## Task 5: The malicious file dropped a few files on disk. Where was "once.cmd" created on disk? Please answer with the full path along with the filename.
 
 Answer:
 C:\Users\CyberJunkie\AppData\Roaming\Photo and Fax Vn\Photo and vn 1.1.2\install\F97891C\WindowsVolume\Games\once.cmd
@@ -70,7 +70,7 @@ Event ID 11 logs file creation. Applying a filter for EventID=11 and searching f
 ![Event ID 11](./eventid11second.png)
 Fig. 6 – File creation event disclosing the full path of once.cmd.
 
-### Task 6: The malicious file attempted to reach a dummy domain, most likely to check the internet connection status. What domain name did it try to connect to?
+## Task 6: The malicious file attempted to reach a dummy domain, most likely to check the internet connection status. What domain name did it try to connect to?
 
 Answer: www.example.com
 
@@ -79,7 +79,7 @@ Looking again at the DNS queries (Event ID 22), we spot a resolution attempt for
 ![Event ID 22](./eventid22second.png)
 Fig. 7 – DNS query showing www.example.com.
 
-### Task 7: Which IP address did the malicious process try to reach out to?
+## Task 7: Which IP address did the malicious process try to reach out to?
 
 Answer: 93.184.216.34
 
@@ -88,7 +88,7 @@ Event ID 3 records network connections, including source process, destination IP
 ![Event ID 3](./eventid3.png)
 Fig. 8 – Outbound network connection logged as Event ID 3.
 
-### Task 8: The malicious process terminated itself after infecting the pc with UltraVnc backdoored variant. When did the process terminated itself?
+## Task 8: The malicious process terminated itself after infecting the pc with UltraVnc backdoored variant. When did the process terminated itself?
 
 Answer: 2024-02-14 03:41:58
 
