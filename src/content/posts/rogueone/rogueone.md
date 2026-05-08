@@ -18,7 +18,7 @@ Simon reported no unusual behaviour, so the IT team asked him to share screensho
 The SOC manager immediately ordered containment of the workstation and a full memory dump for analysis. 
 As the memory forensics specialist, we are tasked with helping the Forela SOC team identify the malicious activity, extract indicators of compromise, and determine the scope of the incident.
 ```
-
+# Investigation
 ## Task 1: Please identify the malicious process and confirm process id of malicious process.
 
 **Answer:** `6812`
@@ -97,7 +97,6 @@ $ md5sum file.0x9e8b91ec0140.0x9e8b957f24c0.ImageSectionObject.svchost.exe.img
 
 Note: The file name `svchost.exe` (notice the missing “s”) and its location in `C:\\Users\\simon.stark\\Downloads` already raise suspicion before any in-depth analysis.
 
----
 
 ## Task 4: In order to find the scope of the incident, the SOC manager has deployed a threat hunting team to sweep across the environment for any indicator of compromise. It would be a great help to the team if you are able to confirm the C2 IP address and ports so our team can utilise these in their sweep.
 
@@ -112,7 +111,6 @@ $ vol -f ./RogueOne/20230810.mem windows.netscan | grep 6812
 
 The connection is active, confirming that the malware established a TCP session to `13.127.155.166` on port `8888`. This IP:port pair should be used in threat hunting across the environment.
 
----
 
 ## Task 5: We need a timeline to help us scope out the incident and help the wider DFIR team to perform root cause analysis. Can you confirm time the process was executed and C2 channel was established?
 
@@ -120,7 +118,7 @@ The connection is active, confirming that the malware established a TCP session 
 
 Both the `pstree` and `netscan` output show the same timestamp for the process start and the network connection: `2023-08-10 11:30:03`. This suggests that C2 communication began immediately upon execution.
 
----
+
 
 ## Task 6: What is the memory offset of the malicious process?
 
@@ -132,7 +130,6 @@ The `pstree` output includes the `EPROCESS` virtual address (offset) in the thir
 *** 6812        7436    svchost.exe     0x9e8b87762080  3    ...
 ```
 
----
 
 ## Task 7: You successfully analyzed a memory dump and received praise from your manager. The following day, your manager requests an update on the malicious file. You check VirusTotal and find that the file has already been uploaded, likely by the reverse engineering team. Your task is to determine when the sample was first submitted to VirusTotal.
 

@@ -12,7 +12,8 @@ lang: ''
 # Client Communication
 
  ```bash
- A junior member of our security team has been performing research and testing on what we believe to be an old and insecure operating system. We believe it may have been compromised and have managed to retrieve a memory dump of the asset. We want to confirm what actions were carried out by the attacker and if any other assets in our environment might be affected.
+ A junior member of our security team has been performing research and testing on what we believe to be an old and insecure operating system. 
+ We believe it may have been compromised and have managed to retrieve a memory dump of the asset. We want to confirm what actions were carried out by the attacker and if any other assets in our environment might be affected.
  ```
 
 The following report addresses each question raised during the investigation.
