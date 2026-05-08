@@ -9,7 +9,7 @@ draft: false
 lang: ''
 ---
 
-## 1. Client Communication
+# Client Communication
 
  ```bash
  A junior member of our security team has been performing research and testing on what we believe to be an old and insecure operating system. We believe it may have been compromised and have managed to retrieve a memory dump of the asset. We want to confirm what actions were carried out by the attacker and if any other assets in our environment might be affected.
@@ -17,7 +17,7 @@ lang: ''
 
 The following report addresses each question raised during the investigation.
 
-## 2. Investigation
+# Investigation
 
 ## Task 1: What is the Operating System of the machine?
 
@@ -189,6 +189,9 @@ The SHA‑256 hash was submitted to VirusTotal, which returned the following **i
 
 **Answer:** `d3b592cd9481e4f053b5362e22d61595`
 
+![VirusTotal Search](./1.png)
+
+
 ## Task 13: Following the previous question, what is the Imphash of the malicous file you found above?
 
 Also from the VirusTotal report, the file’s creation time is:
@@ -281,7 +284,7 @@ The legitimate system process is `csrss.exe` (Client/Server Runtime Subsystem). 
 
 **Answer:** `csrsss.exe`
 
-## Summary of Findings
+# Summary of Findings
 
 | # | Question | Answer |
 | --- | --- | --- |
