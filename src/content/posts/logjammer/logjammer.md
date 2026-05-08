@@ -11,8 +11,9 @@ lang: ''
 
 # Scenario
 
-You are vying for a junior DFIR consultant role at Forela-Security, a respected cybersecurity consultancy. As part of the technical assessment, you've been handed a set of Windows event logs. A user named `Cyberjunkie` is suspected of malicious activity. Your task: analyze the logs, extract key evidence, and report your findings. This challenge mirrors real-world incident response duties, testing your knowledge of Windows Event IDs and your ability to identify and interpret security-relevant events.
-
+```
+We have been presented with the opportunity to work as a junior DFIR consultant for a big consultancy. However, they have provided a technical assessment for you to complete. The consultancy Forela-Security would like to gauge your knowledge of Windows Event Log Analysis. we are to analyse and report back on the questions they have asked.
+```
 # Investigation
 
 ## Task 1: When did the cyberjunkie user first successfully log into his computer? (UTC)
