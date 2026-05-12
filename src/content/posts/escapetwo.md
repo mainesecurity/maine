@@ -1,10 +1,10 @@
 ---
-title: escapetwo
+title: 'EscapeTwo: Breaking Out with Broken Files, From Corrupted Excel to Domain Admin'
 published: 2026-05-12
 description: ''
 image: ''
 tags: []
-category: ''
+category: 'Penetration Tester'
 draft: false 
 lang: ''
 ---
