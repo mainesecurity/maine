@@ -86,19 +86,6 @@ Host script results:
 - **DNS (53):** Possible to brute force subdomains.
 - **WinRM (5985):** Will provide a shell if valid credentials are found.
 
-```
-+-------------------------+-----------------------------+---------------------------------------------------+
-| Port                    | Service                     | Notes                                             |
-+-------------------------+-----------------------------+---------------------------------------------------+
-| 53                      | DNS                         |                                                   |
-| 88                      | Kerberos                    |                                                   |
-| 135                     | RPC                         |                                                   |
-| 139/445                 | NetBIOS/SMB                 | Potential for file shares and info                |
-| 389/636/3268/3269       | LDAP/LDAPS                  | Possible user enumeration                         |
-| 5985                    | WinRM                       | Will provide a shell if we get credentials         |
-| 464/593/54296           | KPasswd/RPC                 |                                                   |
-+-------------------------+-----------------------------+---------------------------------------------------+
-```
 
 ## Gaining a Foothold
 
@@ -699,6 +686,6 @@ Extracted Domain Hashes:
 - **Review Backup Operators membership**: Limit this group to required accounts only.
 - **Enable logging and alerting**: Monitor for suspicious SMB enumeration and registry access.
 
-## Conclusion
+# Conclusion
 
 Cicada is a classic Active Directory machine that emphasizes the dangers of poor credential management. The path from an anonymous SMB guest to Domain Admin is a realistic scenario often encountered in internal penetration tests. By combining thorough enumeration, credential spraying, and exploitation of Windows privileges, we achieved full compromise of the domain.
