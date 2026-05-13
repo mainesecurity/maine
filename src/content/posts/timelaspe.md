@@ -3,7 +3,7 @@ title: 'Timelapse: LAPS in Time - From Anonymous SMB to Domain Admin'
 published: 2026-05-13
 description: ''
 image: ''
-tags: []
+tags: ['Active Directory']
 category: 'Penetration Tester'
 draft: false 
 lang: ''
@@ -55,7 +55,7 @@ Hostname: dc01.timelapse.htb
 To make life easier, add the following line to `/etc/hosts`:
 
 ```
-10.10.11.152 timelapse.htb dc01.timelapse.htb
+10.10.11.151 timelapse.htb dc01.timelapse.htb
 ```
 
 ### 2.2 SMB Enumeration (port 445)
@@ -63,8 +63,8 @@ To make life easier, add the following line to `/etc/hosts`:
 Using `smbclient` with a null session, it’s possible to list shares and browse the `open` share:
 
 ```bash
-smbclient -N -L //10.10.11.152        # list shares
-smbclient -N //10.10.11.152/open    # connect to “open”
+smbclient -N -L //10.10.11.151        # list shares
+smbclient -N //10.10.11.151/open    # connect to “open”
 ```
 
 Within the `open` share, two important items appear:
@@ -85,7 +85,7 @@ The `winrm_backup.zip` file is the key to the first shell. The `HelpDesk` folder
 Download the ZIP:
 
 ```bash
-smbclient -N //10.10.11.152/open -c "get winrm_backup.zip"
+smbclient -N //10.10.11.151/open -c "get winrm_backup.zip"
 ```
 
 The archive is password‑protected. Generate a hash with `zip2john` and crack it with John the Ripper using the `rockyou.txt` wordlist:

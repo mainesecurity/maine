@@ -3,7 +3,7 @@ title: 'EscapeTwo: Breaking Out with Broken Files - From Corrupted Excel to Doma
 published: 2026-05-12
 description: ''
 image: ''
-tags: []
+tags: ['Active Directory']
 category: 'Penetration Tester'
 draft: false 
 lang: ''

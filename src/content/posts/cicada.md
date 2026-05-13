@@ -3,7 +3,7 @@ title: 'Cicada: Chirping Credentials — From Default Password to Domain Admin'
 published: 2026-05-12
 description: ''
 image: ''
-tags: []
+tags: ['Active Directory']
 category: 'Penetration Tester'
 draft: false 
 lang: ''
