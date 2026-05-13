@@ -1,5 +1,5 @@
 ---
-title: 'EscapeTwo: Breaking Out with Broken Files, From Corrupted Excel to Domain Admin'
+title: 'EscapeTwo: Breaking Out with Broken Files - From Corrupted Excel to Domain Admin'
 published: 2026-05-12
 description: ''
 image: ''

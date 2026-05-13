@@ -1,5 +1,5 @@
 ---
-title: 'Support: Hidden in the Info Field, From SMB Share to Domain Admin'
+title: 'Support: Hidden in the Info Field - From SMB Share to Domain Admin'
 published: 2026-05-12
 description: ''
 image: ''
