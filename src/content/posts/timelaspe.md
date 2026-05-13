@@ -14,9 +14,9 @@ lang: ''
 
 **Timelapse** is an Easy‑rated Windows Active Directory box on Hack The Box. The initial foothold relies on cracking a password‑protected ZIP archive that is freely available via an anonymous SMB share. Inside is a `.pfx` certificate that – once unlocked – gives shell access over WinRM. Privesc follows a classic AD route: find credentials in PowerShell history, then abuse membership of the `LAPS_Readers` group to retrieve the local Administrator password of the Domain Controller.
 
-## 2. Reconnaissance
+# 2. Reconnaissance
 
-### 2.1 Nmap Scan
+## 2.1 Nmap Scan
 
 A full TCP port scan (`-p-`) reveals 18 open ports, all typical for a Windows Domain Controller:
 
@@ -58,7 +58,7 @@ To make life easier, add the following line to `/etc/hosts`:
 10.10.11.151 timelapse.htb dc01.timelapse.htb
 ```
 
-### 2.2 SMB Enumeration (port 445)
+## 2.2 SMB Enumeration (port 445)
 
 Using `smbclient` with a null session, it’s possible to list shares and browse the `open` share:
 
@@ -78,9 +78,9 @@ Within the `open` share, two important items appear:
 
 The `winrm_backup.zip` file is the key to the first shell. The `HelpDesk` folder contains LAPS‑related files (`.msi`, `.docx`), a strong hint that LAPS will be used later.
 
-## 3. Shell as **legacyy**
+# 3. Shell as **legacyy**
 
-### 3.1 Crack the ZIP Password
+## 3.1 Crack the ZIP Password
 
 Download the ZIP:
 
@@ -111,7 +111,7 @@ Archive: winrm_backup.zip
  extracting: legacyy_dev_auth.pfx
 ```
 
-### 3.2 Extract the Certificate and Private Key
+## 3.2 Extract the Certificate and Private Key
 
 A `.pfx` (PKCS#12) file contains a certificate and an encrypted private key. `openssl` is used to extract both:
 
@@ -136,7 +136,7 @@ The private key is encrypted, so when prompted for the import password, **“sup
 
 (Visual representation of the extraction process)
 
-### 3.3 WinRM Access with Evil‑WinRM
+## 3.3 WinRM Access with Evil‑WinRM
 
 Evil‑WinRM can authenticate using a public/private key pair instead of a password. Connect to the SSL‑enabled WinRM on port 5986:
 
@@ -156,9 +156,9 @@ type C:\\Users\\legacyy\\desktop\\user.txt
 35a0dfaa************************
 ```
 
-## 4. Shell as **svc_deploy**
+# 4. Shell as **svc_deploy**
 
-### 4.1 PowerShell History File
+## 4.1 PowerShell History File
 
 One of the first post‑exploitation enumeration steps is checking the PowerShell history. The file is located at:
 
@@ -180,7 +180,7 @@ exit
 
 The plaintext password for **svc_deploy** is embedded in the history: `E3R$Q62^12p7PLlC%KWaxuaV`.
 
-### 4.2 WinRM as svc_deploy
+## 4.2 WinRM as svc_deploy
 
 Using the discovered credentials, a new Evil‑WinRM session is established:
 
@@ -196,15 +196,15 @@ Global Group memberships     *LAPS_Readers
                              *Domain Users
 ```
 
-## 5. Shell as **Administrator** (root)
+# 5. Shell as **Administrator** (root)
 
-### 5.1 What is LAPS?
+## 5.1 What is LAPS?
 
 **Local Administrator Password Solution (LAPS)** is a Microsoft technology that manages the local Administrator passwords of domain‑joined computers. The Domain Controller stores the passwords in Active Directory and rotates them periodically. A specific Active Directory group (`LAPS_Readers`) is granted read access to these passwords.
 
 By default, the password is stored in the `ms-Mcs-AdmPwd` attribute of the computer object.
 
-### 5.2 Retrieve the Administrator Password
+## 5.2 Retrieve the Administrator Password
 
 Because `svc_deploy` is in `LAPS_Readers`, the LAPS password can be read with a simple AD command:
 
@@ -225,7 +225,7 @@ ObjectClass       : computer
 
 The attribute `ms-mcs-admpwd` contains the plaintext Administrator password.
 
-### 5.3 WinRM as Administrator
+## 5.3 WinRM as Administrator
 
 With this password, use Evil‑WinRM once more to get a privileged shell:
 

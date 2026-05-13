@@ -13,9 +13,9 @@ lang: ''
 
 This is Cicada, a  Windows Active Directory machine which attack path involves enumerating SMB shares to find a default password in a welcome note, performing RID cycling to discover usernames, and password spraying to find a user still using the default credentials. After gaining a foothold with one user, LDAP enumeration reveals a password stored in another user's description. That user has access to a DEV share containing a backup script, which leaks further credentials. Finally, the `SeBackupPrivilege` is exploited to dump hashes and achieve domain administrator access.
 
-## Reconnaissance
+# Reconnaissance
 
-### Nmap Scan
+## Nmap Scan
 
 An initial scan reveals a typical Windows Domain Controller with ports like 53 (DNS), 88 (Kerberos), 389 (LDAP), and 445 (SMB) open. We note the domain name `cicada.htb` and the hostname `CICADA-DC`, and add them to our `/etc/hosts` file.
 
@@ -87,9 +87,9 @@ Host script results:
 - **WinRM (5985):** Will provide a shell if valid credentials are found.
 
 
-## Gaining a Foothold
+# Gaining a Foothold
 
-### Anonymous SMB Access
+## Anonymous SMB Access
 
 We can access SMB shares anonymously using the `guest` account with an empty password.
 
@@ -238,7 +238,7 @@ david.orelious
 emily.oscars
 ```
 
-### Password Spraying
+## Password Spraying
 
 We spray the discovered default password against all usernames.
 
@@ -276,9 +276,9 @@ WINRM       10.10.11.30    5985   CICADA-DC        [*] Windows Server 2022 Build
 WINRM       10.10.11.30    5985   CICADA-DC        [-] cicada.htb\\michael.wrightson:Cicada$M6Corpb*@Lp#nZp!8
 ```
 
-## Escalating to `david.orelious`
+# Escalating to `david.orelious`
 
-### Enumerating LDAP for Credentials
+## Enumerating LDAP for Credentials
 
 Since `michael.wrightson` has no additional SMB share access, we turn to LDAP to find more information.
 
@@ -330,7 +330,7 @@ WINRM       10.10.11.30    5985   CICADA-DC        [*] Windows Server 2022 Build
 WINRM       10.10.11.30    5985   CICADA-DC        [-] cicada.htb\\david.orelious:aRt$Lp#7t*VQ!3
 ```
 
-### Accessing the DEV Share
+## Accessing the DEV Share
 
 Unlike previous users, `david.orelious` has read access to the `DEV` share.
 
@@ -443,9 +443,9 @@ ea4481e2************************
    -> Valid for: emily.oscars (SMB + WinRM Access!)
 ```
 
-## Privilege Escalation via `SeBackupPrivilege`
+# Privilege Escalation via `SeBackupPrivilege`
 
-### Identifying the Privilege
+## Identifying the Privilege
 
 `emily.oscars` is a member of the **Backup Operators** group, which grants `SeBackupPrivilege`.
 
@@ -522,7 +522,7 @@ SeIncreaseWorkingSetPrivilege   Increase a process working set            Enable
                      Evil-WinRM as Administrator
 ```
 
-### Exploiting via Registry Dump (Method 1 — Simple)
+## Exploiting via Registry Dump (Method 1 — Simple)
 
 We save the SAM and SYSTEM registry hives and download them.
 
@@ -558,7 +558,7 @@ DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c0
 [*] Cleaning up...
 ```
 
-### Escalating to Administrator
+# Escalating to Administrator
 
 We use the extracted hash to get a shell as Administrator and read the root flag.
 
@@ -664,7 +664,7 @@ Extracted Domain Hashes:
 
 ## Cleanup and Defensive Countermeasures
 
-### Summary of Attack Path
+# Summary of Attack Path
 
 1. **Reconnaissance**: Nmap scan identified open ports and services.
 2. **SMB Enumeration**: Anonymous access to `HR` share revealed default password.

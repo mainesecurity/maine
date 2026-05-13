@@ -23,9 +23,9 @@ Support is an Easy Windows machine that begins with an open SMB share allowing a
 - LDAP querying and information extraction
 - Resource‑Based Constrained Delegation (RBCD) exploitation
 
-## Enumeration
+# Enumeration
 
-### Nmap Scan
+## Nmap Scan
 
 We begin with a full TCP scan against the target.
 
@@ -54,7 +54,7 @@ PORT     STATE SERVICE       VERSION
 
 Numerous open ports indicate a Windows domain controller. Ports 389 (LDAP), 636 (LDAPS), 445 (SMB), and 5985 (WinRM) are especially interesting.
 
-### SMB Shares
+## SMB Shares
 
 Let’s enumerate accessible SMB shares anonymously.
 
@@ -126,9 +126,9 @@ file UserInfo.exe
 UserInfo.exe: PE32 executable (console) Intel 80386 Mono/.Net assembly, for MS Windows
 ```
 
-### Reverse Engineering UserInfo.exe
+## Reverse Engineering UserInfo.exe
 
-### Option 1: ILSpy Decompilation
+###  ILSpy Decompilation
 
 We use Avalonia ILSpy on Linux to decompile the binary. Download and run ILSpy, then load `UserInfo.exe`.
 
@@ -188,7 +188,7 @@ print(res)
 nvEfEK16^1aM4$e7Ac1Uf8x$tRWxPwO1%mz
 ```
 
-### LDAP Enumeration
+## LDAP Enumeration
 
 Now we have LDAP credentials. Add the hostname to `/etc/hosts`:
 
@@ -237,7 +237,7 @@ memberOf             CN=Remote Management Users,CN=Builtin,DC=support,DC=htb
 ...
 ```
 
-## Foothold
+# Foothold
 
 With the password `Ironside47pleasure40Watchful`, connect via WinRM using Evil‑WinRM:
 
@@ -255,9 +255,9 @@ support\\support
 
 The user flag is located at `C:\\Users\\Support\\Desktop\\user.txt`.
 
-## Privilege Escalation
+# Privilege Escalation
 
-### Domain Reconnaissance
+## Domain Reconnaissance
 
 Check the Active Directory domain information:
 
@@ -307,7 +307,7 @@ Mandatory Label\\Medium Mandatory Level        Label            S-1-16-8192
 
 The `Shared Support Accounts` group is non‑default. Further BloodHound analysis reveals its privileges.
 
-### BloodHound Analysis
+## BloodHound Analysis
 
 Collect AD data using SharpHound. Upload the binary via Evil‑WinRM:
 
@@ -362,7 +362,7 @@ Shared Support Accounts (SUPPORT.HTB) – GenericAll on DC.SUPPORT.HTB
 
 Because `support` is a member of `Shared Support Accounts`, which has `GenericAll` on the DC, we can perform an RBCD attack.
 
-### Resource‑Based Constrained Delegation (RBCD)
+## Resource‑Based Constrained Delegation (RBCD)
 
 ### Prerequisites
 

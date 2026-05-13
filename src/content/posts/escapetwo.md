@@ -15,7 +15,7 @@ This writeup details the complete compromise of the HackTheBox machine "EscapeTw
 
 Below is a detailed breakdown of the attack chain.
 
-## Reconnaissance
+# Reconnaissance
 
 Initial reconnaissance was performed using `nmap` to identify open services on the target. The scan revealed a system that appeared to be a Windows Domain Controller with domain `sequel.htb` and hostname `DC01`.
 
